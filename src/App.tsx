@@ -1,23 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { registerRootComponent } from 'expo';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import HomeScreen from './Home/Home';
+import ProfileScreen from './Profile/Profile';
 
-/**
- * Expo entry defaults to ./App.js, so we use 
- * registerRootComponent to register this component
- * as the entry point. In addition, the entryPoint 
- * property in app.json must match to this file path.
- */
-registerRootComponent(App)
+const Stack = createNativeStackNavigator();
 
-
-export default function App() {
+const DefaultStack = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{title: 'Welcome'}}
+      />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <DefaultStack />      
+    </NavigationContainer>
   );
 }
 
@@ -29,3 +38,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+/**
+ * Expo entry defaults to ./App.js, so we use 
+ * registerRootComponent to register this component
+ * as the entry point. In addition, the entryPoint 
+ * property in app.json must match to this file path.
+ */
+registerRootComponent(App)
+
+export default App;
