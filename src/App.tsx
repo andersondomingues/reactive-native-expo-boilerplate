@@ -4,8 +4,8 @@ import { registerRootComponent } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './Home/Home';
-import ProfileScreen from './Profile/Profile';
+import HomeScreen from './screens/home/Home';
+import ProfileScreen from './screens/profile/Profile';
 
 const Stack = createNativeStackNavigator();
 

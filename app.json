@@ -3,7 +3,6 @@
     "name": "my-app",
     "slug": "my-app",
     "version": "1.0.0",
-    "entryPoint": "./src/App.tsx",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,7 +24,14 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "expo": {
+      "packagerOpts": {
+        "config": "metro.config.js",
+        "sourceExts": ["js", "jsx", "scss", "sass"]
+      }
     }
   }
 }
